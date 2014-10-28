@@ -1,0 +1,62 @@
+-function prettyDate(dateString){
+	-var date = new Date(dateString);
+	-var d = date.getDate();
+	-var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+	-var m = monthNames[date.getMonth()];
+	-var y = date.getFullYear();
+	-return d+' '+m+' '+y;
+-}
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		title Bootstrap Blog Boilerplate
+		link(href='/less/bootstrap.css', rel='stylesheet')
+		link(href='/less/stylesheet.css', rel='stylesheet')
+	body
+		.navbar.navbar-inverse.navbar-fixed-top
+			.container
+				.navbar-header
+					button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+				.collapse.navbar-collapse
+					ul.nav.navbar-nav
+						li
+							a(href='/') Home
+						li.active
+							a(href='#') Blog Posts
+						if user
+							li
+								a(href='create') create
+					
+					ul.nav.navbar-nav.navbar-right
+						li
+							if user
+								a(href='/auth/logout')
+									| #{user.title}
+									img(src="#{user.photo}")
+							else
+								a(href='/auth/facebook') Login
+
+		.container
+			.posts.row
+				each post in posts
+					if post.title
+						.col-lg-4.col
+							header
+								h1 #{post.title}
+								h2 #{prettyDate(post.date)}
+								span
+									img(style="background-image: url(#{post.body.author.photo});")
+								if user && post.body.author._id == user._id
+									a.delete(href="/post/delete/#{post._id}")
+										| X
+
+							article #{post.body.text}
+								
+
+		script(src='/libs/jquery.min.js')
+		script(src='/libs/bootstrap.min.js')

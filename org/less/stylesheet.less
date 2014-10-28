@@ -1,0 +1,89 @@
+@import "variables";
+@import "mixins";
+
+body {
+  padding-top: 100px;
+}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+
+.create{
+	input,textarea{
+		margin-bottom: 15px;
+	}
+}
+
+.nav>li>a>img{
+	height: 35px;
+	border-radius: 35px;
+	margin-left: 10px;
+}
+
+
+.posts{	
+	.col{
+		border: 1px solid #cccccc;
+		border-radius: 2px;
+		background-color: #fafafa;
+		margin: 10px;
+		padding-bottom: 15px; 
+
+		header{
+			.delete{
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+			border-bottom: 1px solid #cccccc;
+			position: relative;
+			margin-bottom: 40px;
+			padding-bottom: 20px;
+			h1{
+				text-align: center;
+				font-size: 26px;
+			}
+			h2{
+				text-align: center;
+				color: #cccccc;
+				font-size: 23px;
+			}
+
+			span{
+				position: absolute;
+				.calcRight('((100% / 2) - 20px)', 30%);
+				
+				width: 40px;
+				height: 40px;
+				border: 1px solid #cccccc;
+				border-radius: 100px;
+				img{
+					width: 38px;
+					height: 38px;
+					border-radius: 100px;
+				}
+			}
+		}
+		article{
+
+		}
+		footer{
+			a{
+				border: 1px solid #cccccc;
+				padding: 3px;
+				margin-top: 10px;
+				display: inline-block;
+				color: #333333;
+				&:hover{
+					text-decoration: none;
+					background: #EDEDED;
+					color: #333333;
+				}
+
+			}
+		}
+	}	
+}
